@@ -1,6 +1,5 @@
 package org.java;
 
-
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -11,10 +10,10 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		Evento ev1 = new Evento();
 		
 		// CREAZINE NUOVO EVENTO
 			
+		Evento ev1 = new Evento();
 
 		System.out.println("Inserisci il nome dell'evento: ");
 		String nomeEvento = sc.nextLine();
@@ -36,8 +35,6 @@ public class Main {
 			}
 				
 		System.out.println("\n" + ev1 + "\n");
-		
-		
 			
 		// AGGIUNTA PRENOTAZIONI EVENTO
 		
@@ -60,32 +57,31 @@ public class Main {
 			}
 			
 			
-			// DISDETTA PRENOTAZIONI EVENTO
+		// DISDETTA PRENOTAZIONI EVENTO
 				
 				
-			System.out.println("Quante prenotazioni vuoi disdire?");
-			int prenotazioniDaDisdire = Integer.valueOf(sc.nextLine());
+		System.out.println("Quante prenotazioni vuoi disdire?");
+		int prenotazioniDaDisdire = Integer.valueOf(sc.nextLine());
 				
 				
-			for (int i = 0; i < prenotazioniDaDisdire; i++) {
+		for (int i = 0; i < prenotazioniDaDisdire; i++) {
 					
-				try {
-					ev1.disdici();
+			try {
+				ev1.disdici();
 					
-				} catch (Exception e) {
+			} catch (Exception e) {
 						
-					System.err.println(e.getMessage());
-					break;
+				System.err.println(e.getMessage());
+				break;
 						
-				}
-					
-			}
-				
-			System.out.println(ev1);
-			sc.close();
-				
-				
+			}		
 		}
+				
+		System.out.println(ev1);
+		sc.close();
+				
+				
+	}
 }
 		
 		
