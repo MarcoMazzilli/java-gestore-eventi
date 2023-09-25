@@ -11,7 +11,11 @@ public class Evento {
 	private int nPostiTotale;
 	private int nPostiPrenotati;
 	
-	public Evento(String titolo, LocalDate dataEvento, int nPostiTotale) {
+	public Evento(){
+		
+	}
+	
+	public Evento(String titolo, LocalDate dataEvento, int nPostiTotale) throws Exception {
 		
 		setTitolo(titolo);
 		setDataEvento(dataEvento);
@@ -32,19 +36,33 @@ public class Evento {
 		return dataEvento;
 	}
 	
-	public void setDataEvento(LocalDate dataEvento) {
-		this.dataEvento = dataEvento;
+	public void setDataEvento(LocalDate dataEvento) throws Exception {
+		
+		LocalDate today = LocalDate.now();
+		
+		if(dataEvento.compareTo(today)>= 0) {
+			this.dataEvento = dataEvento;			
+		}else {
+			throw new Exception("Inserire una data valida");
+		}
 	}
 	
 	public int getnPostiTotale() {
 		return nPostiTotale;
 	}
 	
-	public void setnPostiTotale(int nPostiTotale) {
+	private void setnPostiTotale(int nPostiTotale) throws Exception {
+		
+		if(nPostiTotale == 0) {
+			throw new Exception("Il numero dei posti disponibili deve essere maggiore di 0");
+		}else if(nPostiTotale < 0){
+			throw new Exception("Numeri negativi non accettati");
+		}
+		
 		this.nPostiTotale = nPostiTotale;
 	}
 	
-	private int getnPostiPrenotati() {
+	public int getnPostiPrenotati() {
 		return nPostiPrenotati;
 	}
 	
@@ -63,10 +81,9 @@ public class Evento {
 	public void disdici() throws Exception {
 		
 		if (nPostiPrenotati == 0) {
-			throw new Exception("Tutti i posti sono disponibili");
-		}else {
-			this.nPostiPrenotati--;
+			throw new Exception("Non ci sono prenotazioni da disdire");
 		}
+		this.nPostiPrenotati--;
 	}
 	
 	@Override
@@ -74,14 +91,12 @@ public class Evento {
 
 		return "Titolo Evento: " + getTitolo() + "\n"
 			+ "Data Evento: "	+ getDataEvento() + "\n"
-			+ "Tot. posti: "	+ getnPostiTotale() + "\n"
-			+ "Tot prenotati: "	+ getnPostiPrenotati() + ";"
+			+ "Tot. posti evento: "	+ getnPostiTotale() + "\n"
+			+ "Tot prenotati: "	+ getnPostiPrenotati() + "\n"
+			+ "N. posti disonibili: " + (getnPostiTotale()-getnPostiPrenotati())
 			
 		;
 	}
-	//prenota: aggiunge uno ai posti prenotati; se l’evento è già passato o non ha posti disponibili deve sollevare un’eccezione
-	//disdici: riduce di uno i posti prenotati; se l’evento è già passato o non ci sono prenotazioni deve sollevare un’eccezione
-	//l’override del metodo toString() in modo che venga restituita una stringa contenente: data formattata - titolo
 	
 	
 }
