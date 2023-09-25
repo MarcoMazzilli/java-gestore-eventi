@@ -60,8 +60,18 @@ public class ProgrammEvento {
 			}	
 		}
 
-		
 		return eventiDelGiorno;
+	}
+	
+	public void clearArrayList(String password) throws Exception {
+		String authCode = "password";
+		
+		if(authCode.equals(password)) {
+			this.eventi.clear();			
+		}else {
+			throw new Exception("Password Errata! Impossibile eliminare gli eventi. ");
+		}
+		
 	}
 	 
 	 

@@ -62,7 +62,14 @@ public class Main2 {
 		n1.addEvento(c2);
 		
 		System.out.println(n1.getEventiDelGiorno(dataConcerto2));
-		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati");
+		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati \n");
+		try {
+			n1.clearArrayList("password");			
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati \n");
 		
 		
 		sc.close();
