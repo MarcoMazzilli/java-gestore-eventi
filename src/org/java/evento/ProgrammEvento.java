@@ -73,6 +73,28 @@ public class ProgrammEvento {
 		}
 		
 	}
+	
+	public void getProgrammInfo() {
+	
+		
+		
+		for(Evento event : eventi) {
+			
+			Evento e = event;
+			
+			String orarioConcerto = new String();
+			
+			if(e instanceof Concerto) {
+				Concerto c = (Concerto) e;
+				
+				orarioConcerto = "" + c.getOrarioConcerto();
+			}
+			
+			System.out.println(e.getDataEvento() + "[" + orarioConcerto + "]"
+			+ " -> " + e.getTitolo());
+		}
+		
+	}
 	 
 	 
 

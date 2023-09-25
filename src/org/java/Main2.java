@@ -38,9 +38,11 @@ public class Main2 {
 //		String orario = sc.nextLine();
 		String orario = "22:45";
 		
+		//Evento 2
+		
 		Evento c2 = new Concerto();
 		String name2 = "bonobo";
-		LocalDate dataConcerto2 = LocalDate.parse("2024-12-12");
+		LocalDate dataConcerto2 = LocalDate.parse("2024-07-23");
 		int nPosti2 = 1;
 		BigDecimal price2 = new BigDecimal("24.50");
 		String orario2 = "22:45";
@@ -61,15 +63,19 @@ public class Main2 {
 		n1.addEvento(c1);
 		n1.addEvento(c2);
 		
-		System.out.println(n1.getEventiDelGiorno(dataConcerto2));
-		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati \n");
+		System.out.println(n1.getEventiDelGiorno(dataConcerto2) + "\n");
+		System.out.println(n1.getEventiCount()+ " " + "Eventi programmati \n");
+		
+		n1.getProgrammInfo();
+		System.out.println("\n-------------------------------------------\n");
+		
 		try {
 			n1.clearArrayList("password");			
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		
-		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati \n");
+		System.out.println(n1.getEventiCount()+ " " + "Eventi programmati \n");
 		
 		
 		sc.close();
