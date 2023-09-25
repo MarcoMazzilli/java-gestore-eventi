@@ -1,5 +1,6 @@
 package org.java.evento;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,25 +16,25 @@ public class ProgrammEvento {
 		 
 	 }
 	 
-	 
-	 
-	 // GETTER SETTER
+	// GETTER SETTER
 	 
 	public String getTitolo() {
 		
 		return titolo;
 	}
 	
-	
 	public void setTitolo(String titolo) {
 		
 		this.titolo = titolo;
 	}
 	
-	
 	public List<Evento> getEventi() {
 		
 		return eventi;
+	}
+	public int getEventiCount() {
+		
+		return eventi.size();
 	}
 	
 	private void setEventi() {
@@ -45,13 +46,18 @@ public class ProgrammEvento {
 		this.eventi.add(evento);
 	}
 	
-	
-	public List<Evento> getEventiDelGiorno(String data){
+	public List<Evento> getEventiDelGiorno(LocalDate dataDaControllare){
 		
 		List<Evento> eventiDelGiorno = new ArrayList<Evento>();
 		
 		for(Evento evento : this.eventi) {
-			System.out.println("Miseria che casino!" + evento);
+			
+			Evento e = evento;
+			
+			if(dataDaControllare.isEqual(e.getDataEvento())) {
+				
+				eventiDelGiorno.add(e);
+			}	
 		}
 
 		

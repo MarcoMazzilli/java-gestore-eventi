@@ -15,6 +15,7 @@ public class Main2 {
 		// CREAZIONE NUOVO CONCERTO
 		
 		Scanner sc = new Scanner(System.in);
+		
 		Evento c1 = new Concerto();
 //		System.out.println("Inserisci il nome del concerto: ");
 //		String name = sc.nextLine();
@@ -37,20 +38,31 @@ public class Main2 {
 //		String orario = sc.nextLine();
 		String orario = "22:45";
 		
+		Evento c2 = new Concerto();
+		String name2 = "bonobo";
+		LocalDate dataConcerto2 = LocalDate.parse("2024-12-12");
+		int nPosti2 = 1;
+		BigDecimal price2 = new BigDecimal("24.50");
+		String orario2 = "22:45";
+		
+		
+		
 		try {
 			c1 = new Concerto(name, dataConcerto, nPosti, orario, price);
-			System.out.println("\n" + c1);
-			
+			c2 = new Concerto(name2, dataConcerto2, nPosti2, orario2, price2);
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());
 			
 		}
 		
-		ProgrammEvento n1 = new ProgrammEvento("Evento 1");
+		ProgrammEvento n1 = new ProgrammEvento("Programma eventi");
 
-		System.out.println(n1.getEventi());
+		n1.addEvento(c1);
+		n1.addEvento(c2);
 		
+		System.out.println(n1.getEventiDelGiorno(dataConcerto2));
+		System.out.println("Programma eventi: \n" + n1.getEventiCount()+ " " + "Eventi programmati");
 		
 		
 		sc.close();
